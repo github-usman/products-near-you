@@ -7,4 +7,11 @@ const server = {
     serverMode: process.env.SERVER_MODE,
 };
 
+// database connectivity
+const database = {
+    dbUri: process.env.DB_URI,
+    dbName: process.env.DB_NAME,
+};
+
 export const {serverMode,serverPort} = server;
+export const {dbUri,dbName} = database;
