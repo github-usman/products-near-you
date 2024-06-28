@@ -3,6 +3,7 @@ import bodyParser from "body-parser";
 import connectMongoDB from "./database/db.js"
 import  greeting  from "./routes/greeting.route.js"
 import  product  from "./routes/product.route.js"
+import  user  from "./routes/user.route.js"
 import { customErrorMiddleware } from "./middleware/error.js";
 
 connectMongoDB();
@@ -12,6 +13,7 @@ app.use(bodyParser.json());
 // routes
 app.use("/greeting",greeting);
 app.use("/",product);
+app.use("/user",user);
 
 
 // Middleware for errors
