@@ -1,5 +1,6 @@
 import { Product } from "../models/product.model.js";
 import catchAysncErrors from "../middleware/catchAysncErrors.js";
+import ErrorHander from "../utils/error-handler.js"
 import ApiFeatures from "../utils/api-feature.js";
 
 // Get all Product
@@ -37,7 +38,7 @@ export const createProduct = catchAysncErrors(async (req, res, next) => {
 export const updateProduct = catchAysncErrors(async (req, res, next) => {
   const existingProduct = await Product.findById(req.params.id);
   if (!existingProduct) {
-    return next();
+    return next(new ErrorHander("Product not found", 404));
   }
 
   const updatedProduct = await Product.findByIdAndUpdate(
@@ -56,7 +57,7 @@ export const updateProduct = catchAysncErrors(async (req, res, next) => {
 export const deleteProduct = catchAysncErrors(async (req, res, next) => {
   const existingProduct = await Product.findById(req.params.id);
   if (!existingProduct) {
-    return next();
+    return next(new ErrorHander("Product not found", 404));
   }
 
   await Product.findByIdAndDelete(existingProduct);
