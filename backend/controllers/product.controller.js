@@ -1,88 +1,61 @@
 import { Product } from "../models/product.model.js";
+import catchAysncErrors from "../middleware/catchAysncErrors.js";
 
-// Create a Product -------ADMIN routes
-
-export const createProduct = async(req,res,next)=>{
-    const newProduct = req.body;
-    try {
-        await Product.create(newProduct)
-        res.status(201).json({
-            success:true,
-            newProduct
-        })
-        
-    } catch (error) {
-        res.status(500).json({
-            success:false,
-            message:`problem due to ${error}`
-        })
-    }
-}
 
 // Get all Product
 
-export const getProducts = async(req,res,next)=>{
-    try {
-      const allProduct =   await Product.find({})
-        res.status(200).json({
-            success:true,
-            allProduct
-        })
-        
-    } catch (error) {
-        res.status(500).json({
-            success:false,
-            message:`problem due to ${error}`
-        })
-    }
-}
+export const getProducts = catchAysncErrors(async (req, res, next) => {
+    const allProduct = await Product.find({})
+    res.status(200).json({
+        success: true,
+        allProduct
+    })
+
+})
+
+// *************ADMIN ROUTES***************//
+
+// Create a Product -------ADMIN routes
+
+export const createProduct = catchAysncErrors(async (req, res, next) => {
+    const newProduct = req.body;
+    await Product.create(newProduct)
+    res.status(201).json({
+        success: true,
+        newProduct
+    })
+
+
+});
 
 // Update a Product -------ADMIN routes
 
-export const updateProduct = async(req,res,next)=>{
-    try {
-        const existingProduct = await Product.findById(req.params.id);
-        if(!existingProduct){
-           return res.status(404).json({
-                success:false,
-                message:"Product is not Found"
-            })
-        }
-
-        const updatedProduct = await Product.findByIdAndUpdate(req.params.id,req.body,{new:true});
-        res.status(200).json({
-            success:true,
-            updatedProduct
-        })
-    } catch (error) {
-        res.status(500).json({
-            success:false,
-            message:`problem due to ${error}`
-        })
+export const updateProduct = catchAysncErrors(async (req, res, next) => {
+    const existingProduct = await Product.findById(req.params.id);
+    if (!existingProduct) {
+        return next();
     }
-}
+
+    const updatedProduct = await Product.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    res.status(200).json({
+        success: true,
+        updatedProduct
+    })
+})
 
 // Update a Product -------ADMIN routes
 
-export const deleteProduct = async(req,res,next)=>{
-    try {
-        const existingProduct = await Product.findById(req.params.id);
-        if(!existingProduct){
-           return res.status(404).json({
-                success:false,
-                message:"Product is not Found"
-            })
-        }
+export const deleteProduct = catchAysncErrors(async (req, res, next) => {
 
-        await Product.findByIdAndDelete(existingProduct);
-        res.status(200).json({
-            success:true,
-            message:"Product deleted successfully"
-        })
-    } catch (error) {
-        res.status(500).json({
-            success:false,
-            message:`problem due to ${error}`
-        })
+    const existingProduct = await Product.findById(req.params.id);
+    if (!existingProduct) {
+        return next();
     }
-}
+
+    await Product.findByIdAndDelete(existingProduct);
+    res.status(200).json({
+        success: true,
+        message: "Product deleted successfully"
+    })
+
+})
