@@ -40,8 +40,8 @@ export const getProductDetails = catchAysncErrors(async (req, res, next) => {
 // Create a Product -------ADMIN routes
 
 export const createProduct = catchAysncErrors(async (req, res, next) => {
-  const newProduct = req.body;
-  await Product.create(newProduct);
+  req.body.user = req.user.id;
+  const newProduct =  await Product.create(req.body);
   res.status(201).json({
     success: true,
     newProduct,
