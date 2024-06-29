@@ -5,7 +5,7 @@ import ApiFeatures from "../utils/api-feature.js";
 
 // Get all Product
 
-export const getProducts = catchAysncErrors(async (req, res, next) => {
+export const getAllProductDetails = catchAysncErrors(async (req, res, next) => {
   const resultPerPage =5;
   const productCount = await Product.countDocuments();
   const apiFeatures = new ApiFeatures(Product.find(), req.query)
@@ -17,6 +17,21 @@ export const getProducts = catchAysncErrors(async (req, res, next) => {
     success: true,
     allProduct,
     productCount
+  });
+});
+
+
+// Get Product Details
+export const getProductDetails = catchAysncErrors(async (req, res, next) => {
+  const product = await Product.findById(req.params.id);
+
+  if (!product) {
+    return next(new ErrorHander("Product not found", 404));
+  }
+
+  res.status(200).json({
+    success: true,
+    product,
   });
 });
 

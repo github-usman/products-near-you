@@ -5,6 +5,7 @@ const connectMongoDB = () => {
     mongoose
         .connect(dbUri, { dbName })
         .then(() => console.log(`DB is connect successfully.`))
+        // *************ERROR HANDLE WITH SHOUTDOWN SERVER*************
         // .catch((err) => console.log(`Unable to connect with DB due to : ${err}`));
 };
 
