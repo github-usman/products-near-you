@@ -20,8 +20,6 @@ export const isAuthenticatedUser = catchAysncErrors(async(req,res,next)=>{
 
 // Role base authentication
 export const authorizeRole = (...roles) => {
-    console.log('h');
-    
     return (req, res, next) => {
       if (!roles.includes(req.user.role)) {
         return next(
