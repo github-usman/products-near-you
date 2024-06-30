@@ -1,25 +1,10 @@
-import { User } from "../models/user.model.js";
-import catchAysncErrors from "../middleware/catchAysncErrors.js";
-import ErrorHander from "../utils/error-handler.js";
-import sendToken from "../utils/jwt-tokens.js";
-import sendEmail from "../utils/send-email.js";
+import { User } from "../../models/user.model.js";
+import catchAysncErrors from "../../middleware/catchAysncErrors.js";
+import ErrorHander from "../../utils/error-handler.js";
+import sendToken from "../../utils/jwt-tokens.js";
+import sendEmail from "../../utils/send-email.js";
 import crypto from "crypto"
 
-// user Register
-export const registerUser = catchAysncErrors(async (req, res, next) => {
-  const { name, email, password } = req.body;
-
-  const user = await User.create({
-    name,
-    email,
-    password,
-    avatar: {
-      public_id: "this is a sample id",
-      url: "profilepicUrl",
-    },
-  });
-  sendToken(user, 201, res);
-});
 
 // user Login
 export const loginUser = catchAysncErrors(async (req, res, next) => {
@@ -134,3 +119,23 @@ export const resetPassword = catchAysncErrors(async (req, res, next) => {
     await user.save()
     sendToken(user,200,res);
 });
+
+// Update User Password
+export const updateUserPassword = catchAysncErrors(async (req, res, next) => {
+  const user = await User.findById(req.user.id).select("+password");
+
+  const isPasswordMatched = await user.comparePassword(req.body.oldPassword);
+  if (!isPasswordMatched) {
+    return next(new ErrorHander("Old password is incorrect", 400));
+  }
+
+  if (req.body.newPassword !== req.body.confirmPassword) {
+    return next(new ErrorHander("Password does not match", 400));
+  }
+
+  user.password = req.body.newPassword;
+  await user.save();
+
+  sendToken(user, 200, res);
+});
+
