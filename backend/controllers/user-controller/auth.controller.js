@@ -3,8 +3,7 @@ import catchAysncErrors from "../../middleware/catchAysncErrors.js";
 import ErrorHander from "../../utils/error-handler.js";
 import sendToken from "../../utils/jwt-tokens.js";
 import sendEmail from "../../utils/send-email.js";
-import crypto from "crypto"
-
+import crypto from "crypto";
 
 // user Login
 export const loginUser = catchAysncErrors(async (req, res, next) => {
@@ -91,33 +90,41 @@ export const forgotPassword = catchAysncErrors(async (req, res, next) => {
 // Reset Password
 
 export const resetPassword = catchAysncErrors(async (req, res, next) => {
-
   // create token hash from params
   const resetPasswordToken = crypto
     .createHash("sha256")
     .update(req.params.token)
     .digest("hex");
 
+  const user = await User.findOne({
+    resetPasswordToken,
+    resetPasswordExpire: { $gt: Date.now() },
+  });
 
-    const user = await User.findOne({
-      resetPasswordToken,
-      resetPasswordExpire:{$gt:Date.now()}
-    });
+  if (!user) {
+    return next(
+      new ErrorHander(
+        "Reset Password Token is Invalid or has been expired",
+        400
+      )
+    );
+  }
 
-    if(!user){
-      return next(new ErrorHander("Reset Password Token is Invalid or has been expired",400));
-    }
+  if (req.body.password !== req.body.confirmPassword) {
+    return next(
+      new ErrorHander(
+        "Reset Password Token is Invalid or has been expired",
+        400
+      )
+    );
+  }
 
-    if(req.body.password !== req.body.confirmPassword){
-      return next(new ErrorHander("Reset Password Token is Invalid or has been expired",400));
-    }
+  user.password = req.body.password;
+  user.resetPasswordToken = undefined;
+  user.resetPasswordExpire = undefined;
 
-    user.password = req.body.password;
-    user.resetPasswordToken = undefined;
-    user.resetPasswordExpire = undefined;
-
-    await user.save()
-    sendToken(user,200,res);
+  await user.save();
+  sendToken(user, 200, res);
 });
 
 // Update User Password
@@ -138,4 +145,3 @@ export const updateUserPassword = catchAysncErrors(async (req, res, next) => {
 
   sendToken(user, 200, res);
 });
-
