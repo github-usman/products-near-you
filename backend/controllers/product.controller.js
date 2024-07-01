@@ -1,12 +1,12 @@
 import { Product } from "../models/product.model.js";
 import catchAysncErrors from "../middleware/catchAysncErrors.js";
-import ErrorHander from "../utils/error-handler.js"
+import ErrorHander from "../utils/error-handler.js";
 import ApiFeatures from "../utils/api-feature.js";
 
 // Get all Product
 
 export const getAllProductDetails = catchAysncErrors(async (req, res, next) => {
-  const resultPerPage =5;
+  const resultPerPage = 5;
   const productCount = await Product.countDocuments();
   const apiFeatures = new ApiFeatures(Product.find(), req.query)
     .search()
@@ -16,10 +16,9 @@ export const getAllProductDetails = catchAysncErrors(async (req, res, next) => {
   res.status(200).json({
     success: true,
     allProduct,
-    productCount
+    productCount,
   });
 });
-
 
 // Get Product Details
 export const getProductDetails = catchAysncErrors(async (req, res, next) => {
@@ -41,7 +40,7 @@ export const getProductDetails = catchAysncErrors(async (req, res, next) => {
 
 export const createProduct = catchAysncErrors(async (req, res, next) => {
   req.body.user = req.user.id;
-  const newProduct =  await Product.create(req.body);
+  const newProduct = await Product.create(req.body);
   res.status(201).json({
     success: true,
     newProduct,

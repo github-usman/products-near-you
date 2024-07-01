@@ -3,7 +3,6 @@ import catchAysncErrors from "../../middleware/catchAysncErrors.js";
 import ErrorHander from "../../utils/error-handler.js";
 import sendToken from "../../utils/jwt-tokens.js";
 
-
 // user Register
 export const registerUser = catchAysncErrors(async (req, res, next) => {
   const { name, email, password } = req.body;
@@ -19,7 +18,6 @@ export const registerUser = catchAysncErrors(async (req, res, next) => {
   });
   sendToken(user, 201, res);
 });
-
 
 // Get User Profile
 export const getUserProfile = catchAysncErrors(async (req, res, next) => {
@@ -53,27 +51,31 @@ export const updateUserProfile = catchAysncErrors(async (req, res, next) => {
 });
 
 // Get all users --ADMIN
-export const getAllUser = catchAysncErrors(async(req,res,next)=>{
+export const getAllUser = catchAysncErrors(async (req, res, next) => {
   const users = await User.find();
 
   res.status(200).json({
-    success:true,
+    success: true,
     users,
   });
 });
 
-
 // Get Single user Details --ADMIN
 
-export const getSingleUserDetails = catchAysncErrors(async(req,res,next)=>{
+export const getSingleUserDetails = catchAysncErrors(async (req, res, next) => {
   const user = await User.findById(req.params.id);
 
-  if(!user){
-    return next(new ErrorHander(`User doest not exist with this id : ${req.params.id}`,400));
+  if (!user) {
+    return next(
+      new ErrorHander(
+        `User doest not exist with this id : ${req.params.id}`,
+        400
+      )
+    );
   }
 
   res.status(200).json({
-    success:true,
+    success: true,
     user,
   });
 });
@@ -98,21 +100,24 @@ export const updateUserRole = catchAysncErrors(async (req, res, next) => {
   });
 });
 
-
-
 // Delete a User
 export const deleteUser = catchAysncErrors(async (req, res, next) => {
   const user = await User.findById(req.params.id);
 
   // we will remove cloudnary
-  if(!user){
-    return next(new ErrorHander(`User doest not exist with this id : ${req.params.id}`,400));
+  if (!user) {
+    return next(
+      new ErrorHander(
+        `User doest not exist with this id : ${req.params.id}`,
+        400
+      )
+    );
   }
 
   await User.findByIdAndDelete(user);
 
   res.status(200).json({
     success: true,
-    message:"User Delete Successfully!"
+    message: "User Delete Successfully!",
   });
 });
