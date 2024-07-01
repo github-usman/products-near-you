@@ -6,6 +6,7 @@ import greeting from "./routes/greeting.route.js";
 import product from "./routes/product.route.js";
 import user from "./routes/user.route.js";
 import admin from "./routes/admin.route.js";
+import product_order from "./routes/product-order.route.js";
 import { customErrorMiddleware } from "./middleware/error.js";
 
 connectMongoDB();
@@ -18,6 +19,7 @@ app.use("/greeting", greeting);
 app.use("/", product);
 app.use("/user", user);
 app.use("/admin", admin);
+app.use("/product-order", product_order);
 
 // Middleware for errors
 app.use(customErrorMiddleware);
