@@ -1,6 +1,6 @@
 import express from "express";
 import {
-    deleteUser,
+  deleteUser,
   getAllUser,
   getSingleUserDetails,
   updateUserRole,
@@ -14,6 +14,6 @@ router
   .route("/user/:id")
   .get(isAuthenticatedUser, authorizeRole("admin"), getSingleUserDetails)
   .put(isAuthenticatedUser, authorizeRole("admin"), updateUserRole)
-  .delete(isAuthenticatedUser, authorizeRole("admin"), deleteUser)
+  .delete(isAuthenticatedUser, authorizeRole("admin"), deleteUser);
 
 export default router;
