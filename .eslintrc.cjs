@@ -5,11 +5,7 @@ module.exports = {
     es2021: true,
     node: true,
   },
-  extends: [
-    "eslint:recommended",
-    "plugin:prettier/recommended",
-    "prettier",
-  ],
+  extends: ["eslint:recommended", "plugin:prettier/recommended", "prettier"],
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
@@ -17,7 +13,7 @@ module.exports = {
     ecmaVersion: 12,
     sourceType: "module",
   },
-  ignorePatterns: ["dist", "build", ".eslintrc.cjs","frontend"],
+  ignorePatterns: ["dist", "build", ".eslintrc.cjs", "frontend"],
   plugins: ["prettier"],
   rules: {
     "prettier/prettier": "error",
