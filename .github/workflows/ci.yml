@@ -1,4 +1,4 @@
-name: BACKEND Continuous Integration
+name: CLIENT AND SERVER Continuous Integration
 
 # this is trigger CI on push and PR for main branch only
 # on:
@@ -29,8 +29,11 @@ jobs:
         with:
           node-version: "18.x"
 
-      - name: Install dependencies
-        run: npm install
+      - name: Install dependencies Client && Server
+        run: |
+          npm install
+          cd frontend
+          npm install
 
       - name: Run lint
         run: npm run lint
