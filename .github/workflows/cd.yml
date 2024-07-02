@@ -1,10 +1,7 @@
-name: FRONTEND Continuous Deployment
+name: Deploy to Netlify
 
 on:
   push:
-    branches:
-      - master
-  pull_request:
     branches:
       - master
 
@@ -15,31 +12,21 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-        with:
-          fetch-depth: 0 # Fetch all history for all branches and tags
 
-      - name: Use Node.js
+      - name: Install Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '18.x' 
-
-      - name: Install dependencies
-        run: |
-          cd frontend
-          npm install
-
-      - name: Build
-        run: |
-          cd frontend
-          npm run build
+          node-version: '14'
 
       - name: Install Netlify CLI
         run: npm install -g netlify-cli
 
       - name: Deploy to Netlify
-        if: github.ref == 'refs/heads/master' # Deploy only on master branch
-
-        run: |
-          netlify deploy --prod --dir=frontend/build --message="Deployed from GitHub Actions"
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: {{secrets.NETLIFY_SITE_ID}}
+        run: |
+          cd frontend
+          npm install
+          npm run build
+          netlify deploy --prod --dir=build --site=${NETLIFY_SITE_ID} --message="Deployed from GitHub Actions"
