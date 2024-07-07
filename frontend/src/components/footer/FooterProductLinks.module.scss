@@ -1,0 +1,48 @@
+@import '../../style/base/global';
+
+.footer {
+  background-color: #f0f3f2;
+  .Container {
+    max-width: 1280px;
+    padding: 5rem 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin: auto;
+
+    @include mobile {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .ProductList {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    color: #887076;
+    font-size: 15px;
+  }
+
+  .ProductList > *:hover {
+    color: #55af22;
+    cursor: pointer;
+  }
+
+  .Container > div > h6 {
+    color: #21313c;
+    font-weight: 600;
+    line-height: 1.2;
+    font-size: 15px;
+    margin-bottom: 1rem;
+  }
+
+  .ProductList.new-line {
+    margin-top: 35px;
+  }
+
+  @media screen and (max-width: 990px) {
+    .Container {
+      flex-direction: column;
+    }
+  }
+}

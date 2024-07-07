@@ -1,12 +1,18 @@
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import MainLayout from './layout/MainLayout';
+import Home from './pages/Home';
 
-function App() {
+const App = () => {
   return (
-    <div>
-      <h1>Product Near You : frontend start now</h1>
-      <h1>CD : implemented</h1>
-    </div>
+    <Router>
+      <MainLayout>
+        <Routes>
+          <Route path="/" element={<Home />} />
+        </Routes>
+      </MainLayout>
+    </Router>
   );
-}
+};
 
 export default App;

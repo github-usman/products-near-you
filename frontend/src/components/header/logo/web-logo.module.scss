@@ -1,0 +1,19 @@
+.header-web-log {
+  .container {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    text-decoration: none;
+    color: #000000;
+  }
+  .logoImg {
+    height: 2rem;
+    width: 2rem;
+    border-radius: 5px;
+    box-shadow: 1px 1px 5px 3px #ece8e89b;
+  }
+
+  .logoName {
+    width: 11.5rem;
+  }
+}
