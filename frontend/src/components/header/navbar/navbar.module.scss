@@ -1,0 +1,43 @@
+.container {
+  display: flex;
+  gap: 2rem;
+
+  .navMenu {
+    margin-top: 10px;
+  }
+
+  .navMenuItem {
+    text-decoration: none;
+    color: #000;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    padding-bottom: 0.7rem;
+    gap: 4px;
+    font-weight: 500;
+  }
+  .navMenuItemhover {
+    color: #55af22;
+  }
+
+  .navMenuOption {
+    max-width: 1280px;
+    width: 98%;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+  }
+
+  .navMenuIcon {
+    transition: ease-in-out 0.3s;
+  }
+
+  .navMenuItemhover .navMenuIcon {
+    transform: rotate(180deg);
+    transition-duration: 0.3s;
+    color: #55af22;
+  }
+}

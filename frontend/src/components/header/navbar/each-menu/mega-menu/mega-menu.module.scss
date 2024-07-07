@@ -1,0 +1,87 @@
+@import '../../../../../style/base/global';
+
+.mega__menu {
+  display: grid;
+  gap: 0.5rem;
+  border-radius: 8px;
+  width: 100%;
+  box-shadow: 1px 1px 10px 1px #5a5858;
+  z-index: 100;
+  background-color: white;
+  grid-template-columns: repeat(4, 1fr);
+
+  @include tablet {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @include small-device {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  img {
+    height: 300px;
+    width: 100%;
+    border-radius: 0 8px 0 0;
+  }
+  .megaMenuList {
+    display: flex;
+    flex-direction: column;
+    word-break: keep-all;
+    font-size: 14px;
+    padding: 5px 10px;
+  }
+
+  .megaMenuList > * {
+    text-decoration: none;
+    padding: 5px 0px;
+    color: #5a5858;
+    cursor: default;
+  }
+
+  .megaMenuList > *:first-child {
+    color: #55af22;
+    font-weight: bold;
+  }
+  .megaMenuList > a {
+    position: relative;
+    width: fit-content;
+    cursor: pointer;
+    color: black;
+    transition: color 0.5s ease-in-out;
+
+    &::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 1.5px;
+      bottom: 0;
+      left: 0;
+      background-color: $primary-green;
+      transition: width 0.5s ease-in-out;
+    }
+
+    &:hover::after {
+      width: 100%;
+    }
+    &:hover {
+      color: $primary-green;
+      transition: all 0.5s ease-in-out;
+    }
+  }
+
+  /* animation */
+  .container {
+    animation: fadeInFromBottom ease 0.2s forwards;
+  }
+
+  @keyframes fadeInFromBottom {
+    0% {
+      opacity: 0;
+      transform: translateY(3rem);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}

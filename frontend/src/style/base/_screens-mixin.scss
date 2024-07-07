@@ -1,0 +1,25 @@
+@mixin tablet {
+  @media (max-width: 991px) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media (max-width: 767px) {
+    @content;
+  }
+}
+
+@mixin small-device {
+  @media (max-width: 479px) {
+    @content;
+  }
+}
+
+// color theory
+
+$primary-green: #55af22;
+
+// shadow
+
+$white-box-shadow: 1px 1px 5px 1px #c0a2a2;
