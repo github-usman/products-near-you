@@ -4,7 +4,6 @@
 @import './style/base/global';
 @import './style/base/screens-mixin';
 
-// // component
-// @import "./components/footer";
-// @import "./components/header";
-// @import "./components/home";
+// component
+@import './style/component/home-hero-carousel/home-hero-carousel';
+@import './style/component/home-hero-carousel/home-hero';

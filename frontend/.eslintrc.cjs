@@ -29,6 +29,7 @@ module.exports = {
       { allowConstantExport: true },
     ],
     "no-unused-vars": ["error", { argsIgnorePattern: "^next$" }],
+    "react/prop-types": "off",
   },
   settings: {
     react: {

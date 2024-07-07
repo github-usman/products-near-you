@@ -1,0 +1,16 @@
+.home-hero-carousel {
+  border-radius: 15px;
+  .carousel-image {
+    max-width: 800px;
+    width: 100%;
+    height: 200px;
+    object-fit: fill;
+    border-radius: 8px;
+  }
+  .slick-dots li.slick-active button:before {
+    color: blue;
+  }
+  .slick-dots li button:before {
+    color: $primary-green;
+  }
+}

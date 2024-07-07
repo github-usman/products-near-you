@@ -1,60 +1,26 @@
 import React from 'react';
+import AllDepartments from '../components/home/all-departments-btn/AllDepartments';
+import SearchBox from '../components/home/search-box/SearchBox';
+import CitySearchBox from '../components/home/search-by-city/CitySearchBox';
+import styles from './home.module.scss';
+import HomeHeroSlider from '../components/home/carousel/HomeHeroSlider';
+import GoogleMap from '../components/home/google-map/GoogleMap';
 
 const Home = () => {
   return (
-    <div>
-      <h4>layout done</h4>
-      <h4>layout done</h4>
-      <h4>layout done</h4>
-      <h4>layout done</h4>
-      <h4>layout done</h4>
-      <h4>layout done</h4>
-      <h4>layout done</h4>
-      <h4>layout done</h4>
-      <h4>layout done</h4>
-      <h4>layout done</h4>
-      <h4>layout done</h4>
-      <h4>layout done</h4>
-      <h4>layout done</h4>
-      <h4>layout done</h4>
-      <h4>layout done</h4>
-      <h4>layout done</h4>
-      <h4>layout done</h4>
-      <h4>layout done</h4>
-      <h4>layout done</h4>
-      <h4>layout done</h4>
-      <h4>layout done</h4>
-      <h4>layout done</h4>
-      <h4>CI/CD implement</h4>
-      <h4>CI/CD implement</h4>
-      <h4>CI/CD implement</h4>
-      <h4>CI/CD implement</h4>
-      <h4>CI/CD implement</h4>
-      <h4>CI/CD implement</h4>
-      <h4>CI/CD implement</h4>
-      <h4>CI/CD implement</h4>
-      <h4>CI/CD implement</h4>
-      <h4>CI/CD implement</h4>
-      <h4>CI/CD implement</h4>
-      <h4>CI/CD implement</h4>
-      <h4>CI/CD implement</h4>
-      <h4>CI/CD implement</h4>
-      <h4>CI/CD implement</h4>
-      <h4>CI/CD implement</h4>
-      <h4>CI/CD implement</h4>
-      <h4>CI/CD implement</h4>
-      <h4>CI/CD implement</h4>
-      <h4>CI/CD implement</h4>
-      <h4>CI/CD implement</h4>
-      <h4>CI/CD implement</h4>
-      <h4>CI/CD implement</h4>
-      <h4>CI/CD implement</h4>
-      <h4>CI/CD implement</h4>
-      <h4>CI/CD implement</h4>
-      <h4>CI/CD implement</h4>
-      <h4>CI/CD implement</h4>
-      <h4>CI/CD implement</h4>
-    </div>
+    <main className={`${styles.container} wrapper`}>
+      <div className={styles.home__navbar}>
+        <AllDepartments />
+        <SearchBox />
+        <CitySearchBox />
+      </div>
+      <section className="wrapper home-hero-section">
+        <div className="carousel">
+          <HomeHeroSlider />
+        </div>
+        <GoogleMap />
+      </section>
+    </main>
   );
 };
 
