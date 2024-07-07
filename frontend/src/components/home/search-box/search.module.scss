@@ -1,0 +1,35 @@
+.container {
+  display: flex;
+  /* z-index: 1000; */
+}
+
+.inputBtn {
+  background-color: transparent;
+  border: 0.1px solid hsl(0, 29%, 86%);
+  display: flex;
+  align-self: center;
+  padding: 0.7rem 1rem;
+  border-radius: 8px 0 0 8px;
+  font-size: 18px;
+  width: 100%;
+  outline-color: #55af22;
+}
+.searchBtn {
+  background-color: #b3f18f;
+  cursor: pointer;
+  border-radius: 0 8px 8px 0;
+  border: 0.1px solid hsl(0, 29%, 86%);
+  border-left: none;
+  padding: 0 0.5rem;
+}
+.searchBtn:hover {
+  background-color: #55af22;
+  .searchIncon {
+    color: white;
+  }
+}
+.searchIncon {
+  color: black;
+  font-size: 28px;
+  padding: 0;
+}

@@ -9,7 +9,7 @@
     "start": "node backend/server.js",
     "dev": "nodemon backend/server.js",
     "lint:backend": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "lint:frontend": "cd frontend && eslint src --ext .js,.jsx,.ts,.tsx",
+    "lint:frontend": "cd frontend && eslint src --ext .js,.jsx",
     "lint": "npm run lint:backend && npm run lint:frontend",
     "lint:fix": "npm run lint:backend -- --fix && npm run lint:frontend -- --fix",
     "prettier:fix": "prettier --write .",
