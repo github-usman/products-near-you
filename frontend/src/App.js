@@ -2,7 +2,8 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import MainLayout from './layout/MainLayout';
 import Home from './pages/home/Home';
-import UserLogin from './pages/auth/login/user/UserLogin';
+import AuthAdmin from './custom-hooks/AuthAdmin';
+import SellerPage from './pages/seller/Seller';
 
 const App = () => {
   return (
@@ -10,7 +11,14 @@ const App = () => {
       <MainLayout>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/" element={<UserLogin />} />
+          <Route
+            path="/seller-page"
+            element={
+              <AuthAdmin>
+                <SellerPage />
+              </AuthAdmin>
+            }
+          />
         </Routes>
       </MainLayout>
     </Router>

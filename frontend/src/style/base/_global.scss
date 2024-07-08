@@ -17,6 +17,15 @@
   max-width: 1280px;
   margin: auto;
 }
+
+.error-message {
+  width: fit-content;
+  font-size: 16px;
+  color: rgb(238, 75, 75);
+  background-color: #e918183d;
+  border-radius: 30%;
+  padding: 5px 5px;
+}
 @import 'slick-carousel/slick/slick.css';
 @import 'slick-carousel/slick/slick-theme.css';
 
