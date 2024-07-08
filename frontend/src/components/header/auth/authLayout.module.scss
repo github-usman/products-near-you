@@ -1,3 +1,4 @@
+@import '../../../style/base/global';
 .container {
   display: flex;
   font-size: 1.5rem;
@@ -5,7 +6,54 @@
   gap: 1rem;
   cursor: pointer;
 }
+.name_user {
+  background-color: #55af22;
+  color: white;
+  padding: 1px 6px;
+  border-radius: 50%;
+  font-size: 18px;
+  animation: repel 1s infinite;
+}
 
+.logoutMenuParent {
+  position: relative;
+}
+
+.logoutMenu {
+  position: absolute;
+  box-shadow: $white-box-shadow;
+  background-color: #ffffff;
+  border-radius: 8px;
+  width: fit-content;
+  cursor: auto;
+  padding: 10px;
+  button {
+    text-wrap: nowrap;
+    cursor: pointer;
+    background-color: #182213;
+    border: none;
+    padding: 5px 8px;
+    color: #fff;
+    border-radius: 5px;
+  }
+}
+
+@keyframes repel {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+  }
+  0% {
+    box-shadow: 0 0 1px 0.1px #7fec12;
+  }
+  100% {
+    box-shadow: 0 0 1px 20px rgba(186, 241, 149, 0);
+  }
+}
+.name_user:hover {
+  background-color: #182213;
+  color: white !important;
+}
 .container > *:hover {
   color: #182213;
 }

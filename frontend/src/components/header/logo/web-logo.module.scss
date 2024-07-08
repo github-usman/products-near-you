@@ -1,4 +1,4 @@
-@import "../../../style/base/screens-mixin";
+@import '../../../style/base/screens-mixin';
 .header-web-log {
   .container {
     display: flex;
@@ -12,9 +12,8 @@
     width: 2rem;
     border-radius: 5px;
     box-shadow: 1px 1px 5px 3px #ece8e89b;
-   
   }
-  .spanVal{
+  .spanVal {
     color: $primary-green;
   }
 

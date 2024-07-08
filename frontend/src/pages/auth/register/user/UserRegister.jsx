@@ -24,7 +24,7 @@ const UserRegister = ({ handleActive }) => {
           <button type="submit">Sign Up</button>
           <p className="already__exist_acc">
             Already have an account?{' '}
-            <span className="link_button" onClick={() => handleActive('2')}>
+            <span className="link_button" onClick={() => handleActive('1')}>
               Sign In
             </span>
           </p>

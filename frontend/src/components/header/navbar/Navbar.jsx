@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { IoIosArrowDown } from 'react-icons/io';
 import MegaMenu from './each-menu/mega-menu/MegaMenu';
 import styles from './navbar.module.scss';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   // const [showMenu, setShowMenu] = useState(false);
@@ -97,7 +98,8 @@ const Navbar = () => {
         </p>
       </div>
       <div className={styles.navMenu}>
-        <p
+        <Link
+          to={'/seller-page'}
           className={
             active === '5'
               ? `${styles.navMenuItem} ${styles.navMenuItemhover}`
@@ -107,7 +109,7 @@ const Navbar = () => {
           onMouseLeave={() => handleActive('')}
         >
           For Seller <IoIosArrowDown className={styles.navMenuIcon} />
-        </p>
+        </Link>
       </div>
     </div>
   );
