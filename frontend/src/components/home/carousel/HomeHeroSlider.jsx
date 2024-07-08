@@ -10,12 +10,24 @@ import medical from '../../../assets/media/images/carousel-img/medical.jpg';
 const testimonialsList = [
   {
     image: dairy,
+    sale_discount: 'Opening Sale Discount 2%',
+    sale_title: 'Dairy Shop For Fresh Milk',
+    sale_para:
+      'Introduced a new model for online Check for product availablity near in your city for your convenient and less price ₹',
   },
   {
     image: grocery,
+    sale_discount: 'Opening Sale Discount 3%',
+    sale_title: 'Availablity all grocery at low cost',
+    sale_para:
+      'Introduced a new model for online Check for product availablity near in your city for your convenient and less price ₹',
   },
   {
     image: medical,
+    sale_discount: 'Opening Sale Discount 5%',
+    sale_title: 'Be healthy, get any Medicine!',
+    sale_para:
+      'Introduced a new model for online Check for product availablity near in your city for your convenient and less price ₹',
   },
 ];
 
@@ -35,7 +47,7 @@ export default function HomeHeroSlider() {
     <div className="home-hero-carousel">
       <Slider {...settings}>
         {testimonialsList.map((testimonial, index) => {
-          return <SliderComponent key={index} image={testimonial.image} />;
+          return <SliderComponent key={index} testimonial={testimonial} />;
         })}
       </Slider>
     </div>

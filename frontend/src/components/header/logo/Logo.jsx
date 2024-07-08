@@ -12,7 +12,11 @@ const Logo = () => {
           src={web_log}
           alt="shopping in you city logo"
         />
-        <h2 className={styles.logoName}>ProductNearYou</h2>
+        <h2 className={styles.logoName}>
+          Product
+          <span className={styles.spanVal}>Near</span>
+          You
+        </h2>
       </Link>
     </div>
   );

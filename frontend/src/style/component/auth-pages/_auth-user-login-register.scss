@@ -1,0 +1,102 @@
+.auth__user__login, .auth__user__register {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor:auto;
+    background-color: rgba(0, 0, 0, 0.552);
+    .parent-container {
+        
+        color: black;
+        border-radius: 14px;
+        background-color: rgb(255, 255, 255);
+
+        .title{
+            display: flex;
+            justify-content: space-between;
+            padding:  2rem 2rem 0 2rem;
+            :nth-child(2){
+                color: grey;
+                font-size: 20px;
+                font-weight: 600;
+                cursor: pointer;
+                &:hover{
+                    color: black;
+                }
+            }
+        }
+
+        form{
+            padding: 2rem;
+            max-width: 436px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            label{
+              color: #3d4f58;
+              margin-top: 0.25rem;
+              font-size: 14px;
+            }
+            input{
+              padding: 8.8px 16px;
+              border-radius: 5px;
+              border: 0.5px solid #d8dbdd;
+            }
+            .term__and__condition{
+              color: #889397;
+              margin-top: .25rem;
+              font-size: 12.25px;
+            }
+            .already__exist_acc{
+              color: #5c6c75;
+              text-align: center;
+              margin-top: 2rem;
+              font-size: 14px;
+            }
+            button{
+              background-color: #0AAD0A;
+              width: fit-content;
+              margin-top: 1rem;
+              border-radius: 5px;
+              border: none;
+              color: #ffffff;
+              padding: 8.8px 16px;
+              cursor: pointer;
+              &:hover{
+                background-color: black;
+
+              }
+            }
+
+            span, .link_button{
+              color: #0AAD0A;
+              text-decoration: none;
+              cursor: pointer;
+            }
+        }
+      }
+
+      .parent-container {
+        animation: fadeInFromBottom ease 0.2s forwards;
+      }
+      
+      @keyframes fadeInFromBottom {
+        0% {
+          opacity: 0;
+          transform: translateY(5rem);
+        }
+      
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+  }
+  
+ 
+  
