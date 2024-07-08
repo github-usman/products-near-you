@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { FaHeart, FaUserShield } from 'react-icons/fa';
 import { IoBagHandleSharp } from 'react-icons/io5';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import UserLogin from '../../../pages/auth/login/user/UserLogin';
 import UserRegister from '../../../pages/auth/register/user/UserRegister';
 import { logout } from '../../../redux/auth/authSlice';
@@ -38,7 +38,9 @@ const AuthLayout = () => {
           {active === '3' && (
             <div className={styles.logoutMenu}>
               <button onClick={handleLogout}>Logout</button>
-              <button onClick={() => handleActive('')}>View Profile</button>
+              <Link to={'/user/profile'} onClick={() => handleActive('')}>
+                View Profile
+              </Link>
             </div>
           )}
         </div>

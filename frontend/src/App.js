@@ -4,6 +4,7 @@ import MainLayout from './layout/MainLayout';
 import Home from './pages/home/Home';
 import AuthAdmin from './custom-hooks/AuthAdmin';
 import SellerPage from './pages/seller/Seller';
+import AdminProfile from './pages/profle/AdminProfile';
 
 const App = () => {
   return (
@@ -16,6 +17,14 @@ const App = () => {
             element={
               <AuthAdmin>
                 <SellerPage />
+              </AuthAdmin>
+            }
+          />
+          <Route
+            path="/user/profile"
+            element={
+              <AuthAdmin>
+                <AdminProfile />
               </AuthAdmin>
             }
           />
