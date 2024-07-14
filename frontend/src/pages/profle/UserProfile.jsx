@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { userProfileFetch } from '../../redux/auth/authSlice';
 
-const AdminProfile = () => {
+const UserProfile = () => {
   const { user } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
@@ -16,4 +16,4 @@ const AdminProfile = () => {
   );
 };
 
-export default AdminProfile;
+export default UserProfile;

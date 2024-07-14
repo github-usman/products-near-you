@@ -15,7 +15,7 @@ const router = express();
 
 router.get("/products", getAllProductDetails);
 router.post(
-  "/product",
+  "/new-products",
   isAuthenticatedUser,
   authorizeRole("admin"),
   createProduct

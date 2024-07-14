@@ -23,7 +23,7 @@ app.use(
 
 // routes
 app.use("/greeting", greeting);
-app.use("/", product);
+app.use("/seller", product);
 app.use("/user", user);
 app.use("/admin", admin);
 app.use("/product-order", product_order);
