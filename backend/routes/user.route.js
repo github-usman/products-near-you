@@ -8,6 +8,7 @@ import {
 } from "../controllers/user-controller/auth.controller.js";
 import {
   getUserProfile,
+  registerSellerUser,
   registerUser,
   updateUserProfile,
 } from "../controllers/user-controller/profile.controller.js";
@@ -17,6 +18,7 @@ const router = express();
 
 // profile
 router.post("/register", registerUser);
+router.post("/seller/register", registerSellerUser);
 router.get("/me", isAuthenticatedUser, getUserProfile);
 
 // auth

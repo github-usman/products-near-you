@@ -1,0 +1,18 @@
+.home__list_all_product__container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 1rem;
+
+  @include tablet {
+    gap: 0.7rem;
+
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  @include mobile {
+    gap: 0.5rem;
+    grid-template-columns: 1fr 1fr;
+  }
+  @include small-device {
+    grid-template-columns: 1fr;
+  }
+}

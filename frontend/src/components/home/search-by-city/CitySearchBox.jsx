@@ -55,7 +55,7 @@ const CitySearchBox = () => {
     <div className={styles.main_container}>
       <div
         className={styles.container}
-        onMouseEnter={handleHover}
+        onClick={handleHover}
         onMouseLeave={handleLeave}
       >
         <div>

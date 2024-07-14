@@ -18,6 +18,28 @@ export const registerUser = catchAysncErrors(async (req, res, next) => {
   });
   sendToken(user, 201, res);
 });
+// user Register
+export const registerSellerUser = catchAysncErrors(async (req, res, next) => {
+  const { name, email, password, address, mobile_no, location } = req.body;
+
+  const user = await User.create({
+    name,
+    email,
+    password,
+    address,
+    mobile_no,
+    location: {
+      longitude: location.longitude,
+      latitude: location.latitude,
+    },
+    avatar: {
+      public_id: "this is a sample id",
+      url: "profilepicUrl",
+    },
+    role: "seller",
+  });
+  sendToken(user, 201, res);
+});
 
 // Get User Profile
 export const getUserProfile = catchAysncErrors(async (req, res, next) => {

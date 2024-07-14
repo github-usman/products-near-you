@@ -1,6 +1,9 @@
 .auth__user__login,
-.auth__user__register {
+.auth__user__register,
+.auth__seller__register {
   position: absolute;
+  overflow: hidden;
+  overflow-y: scroll;
   top: 0;
   left: 0;
   width: 100%;
@@ -14,7 +17,6 @@
     color: black;
     border-radius: 14px;
     background-color: rgb(255, 255, 255);
-
     .title {
       display: flex;
       justify-content: space-between;
@@ -94,6 +96,34 @@
     100% {
       opacity: 1;
       transform: translateY(0);
+    }
+  }
+}
+
+.auth__user__login {
+  .parent-container {
+    form {
+      padding-bottom: 0rem;
+    }
+  }
+
+  .seller_link_button {
+    text-align: center;
+    font-size: 14px;
+    cursor: pointer;
+    width: fit-content;
+    margin: auto;
+    margin-bottom: 2rem;
+    margin-top: 0.5rem;
+    background-color: #000000;
+    color: #ffffff !important;
+    border-radius: 5px;
+    padding: 7px 10px;
+    @include repel-animation;
+
+    &:hover {
+      background-color: #0aad0a;
+      color: #ffffff;
     }
   }
 }

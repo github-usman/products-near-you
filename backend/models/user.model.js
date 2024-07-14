@@ -34,6 +34,27 @@ const userSchema = new mongoose.Schema({
       required: true,
     },
   },
+
+  address: {
+    type: String,
+    default: "",
+  },
+  mobile_no: {
+    type: Number,
+    minLength: [10, "Mobile Number should be greater than 10 characters"],
+  },
+  location: {
+    longitude: {
+      type: String,
+      required: true,
+      default: "0.0",
+    },
+    latitude: {
+      type: String,
+      required: true,
+      default: "0.0",
+    },
+  },
   role: {
     type: String,
     default: "user",

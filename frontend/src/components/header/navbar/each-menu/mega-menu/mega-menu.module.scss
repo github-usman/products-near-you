@@ -67,21 +67,20 @@
       transition: all 0.5s ease-in-out;
     }
   }
+}
+/* animation */
+.mega__menu {
+  animation: fadeInFromBottom ease 0.3s forwards;
+}
 
-  /* animation */
-  .container {
-    animation: fadeInFromBottom ease 0.2s forwards;
+@keyframes fadeInFromBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(3rem);
   }
 
-  @keyframes fadeInFromBottom {
-    0% {
-      opacity: 0;
-      transform: translateY(3rem);
-    }
-
-    100% {
-      opacity: 1;
-      transform: translateY(0);
-    }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

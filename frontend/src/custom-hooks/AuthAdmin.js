@@ -7,7 +7,7 @@ const AuthAdmin = ({ children }) => {
   const userRole = useSelector((state) => state.auth.userRole);
 
   if (!isAuthenticated) {
-    return <Navigate to="/login" />;
+    return <Navigate to="/" />;
   }
 
   if (userRole !== 'admin') {

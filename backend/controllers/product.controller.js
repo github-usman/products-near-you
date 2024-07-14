@@ -1,3 +1,5 @@
+import multer from "multer";
+import cloudinary from "../config/cloudinaryConfig.js";
 import { Product } from "../models/product.model.js";
 import catchAysncErrors from "../middleware/catchAysncErrors.js";
 import ErrorHander from "../utils/error-handler.js";
@@ -38,12 +40,51 @@ export const getProductDetails = catchAysncErrors(async (req, res, next) => {
 
 // Create a Product -------ADMIN routes
 
+// Configure Multer for file handling
+const storage = multer.memoryStorage();
+const upload = multer({ storage });
+
 export const createProduct = catchAysncErrors(async (req, res, next) => {
-  req.body.user = req.user.id;
-  const newProduct = await Product.create(req.body);
-  res.status(201).json({
-    success: true,
-    newProduct,
+  upload.array("images")(req, res, async (err) => {
+    if (err) {
+      return next(new ErrorHander("Image upload failed", 500));
+    }
+    let images = req.files;
+    if (!images || images.length === 0) {
+      return next(new ErrorHander("Images are required", 404));
+    }
+
+    const imagesLinks = [];
+
+    for (let i = 0; i < images.length; i++) {
+      try {
+        const result = await new Promise((resolve, reject) => {
+          const uploadStream = cloudinary.v2.uploader.upload_stream(
+            { folder: "products-images" },
+            (error, result) => {
+              if (error) reject(error);
+              else resolve(result);
+            }
+          );
+          uploadStream.end(images[i].buffer);
+        });
+
+        imagesLinks.push({
+          public_id: result.public_id,
+          url: result.secure_url,
+        });
+      } catch (error) {
+        return next(new ErrorHander(`Error uploading image ${i}`, 500));
+      }
+    }
+
+    req.body.images = imagesLinks;
+    req.body.user = req.user.id;
+    const newProduct = await Product.create(req.body);
+    res.status(201).json({
+      success: true,
+      newProduct,
+    });
   });
 });
 

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { RxCross1 } from 'react-icons/rx';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { login } from '../../../../redux/auth/authSlice';
+import { getAllProduct, login } from '../../../../redux/auth/authSlice';
 
 const UserLogin = ({ handleActive }) => {
   const [email, setEmail] = useState('');
@@ -11,15 +11,20 @@ const UserLogin = ({ handleActive }) => {
   const navigate = useNavigate();
   const { error } = useSelector((state) => state.auth);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    dispatch(login({ email, password }))
-      .unwrap()
-      .then(() => {
-        navigate('/');
-        handleActive('');
-      })
-      .catch(() => {});
+    try {
+      await dispatch(login({ email, password }))
+        .unwrap()
+        .then(() => {
+          navigate('/');
+          handleActive('');
+          dispatch(getAllProduct());
+        })
+        .catch(() => {});
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -33,6 +38,8 @@ const UserLogin = ({ handleActive }) => {
           <label htmlFor="email">Email address</label>
           <input
             type="email"
+            name="email"
+            id="email"
             placeholder="Enter Email address"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -40,12 +47,14 @@ const UserLogin = ({ handleActive }) => {
           <label htmlFor="password">Password</label>
           <input
             type="password"
+            name="password"
+            id="password"
             placeholder="Enter Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
           <p className="term__and__condition">
-            By Signing in, you agree to our
+            By Signin in, you agree to our
             <span> Terms of Service & Privacy Policy</span>
           </p>
           {error && <p className="error-message">{error}</p>}
@@ -57,6 +66,9 @@ const UserLogin = ({ handleActive }) => {
             </span>
           </p>
         </form>
+        <p className="seller_link_button">
+          <span onClick={() => handleActive('4')}>Become a Seller</span>
+        </p>
       </div>
     </div>
   );
