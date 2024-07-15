@@ -7,6 +7,8 @@ import SellerPage from './pages/seller/Seller';
 import AdminProfile from './pages/profle/AdminProfile';
 import CreateProduct from './pages/seller/CreateProduct';
 import NewProductReport from './pages/seller/NewProductReport';
+import _404 from './components/_404';
+import AdminDashBoard from './pages/admin-dashboard/AdminDashBoard';
 
 const App = () => {
   return (
@@ -15,7 +17,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/create-product" element={<CreateProduct />} />
-
+          <Route path="/admin/dashboard" element={<AdminDashBoard />} />
           <Route
             path="/seller-page"
             element={
@@ -40,6 +42,7 @@ const App = () => {
               </AuthAdmin>
             }
           />
+          <Route path="*" element={<_404 />} />
         </Routes>
       </MainLayout>
     </Router>

@@ -1,0 +1,89 @@
+.admin__dashboard__body__layout {
+  width: 100%;
+  overflow-y: scroll;
+  height: 100vh;
+  .header {
+    padding-left: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    background-color: #ffffff;
+    button {
+      padding: 15px 20px;
+      text-transform: capitalize;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 16px;
+      cursor: pointer;
+      background-color: #7a99db;
+      &:hover {
+        background-color: #4373db;
+      }
+      border: none;
+      :nth-child(2) {
+        font-size: 20px;
+      }
+
+      &:hover {
+        :nth-child(2) {
+          transform: rotate(-90deg);
+        }
+      }
+    }
+
+    .toggle__btn {
+      cursor: pointer;
+      width: fit-content;
+    }
+  }
+  .hr-line {
+    position: sticky;
+    top: 50.2px;
+  }
+  .main-container {
+    padding: 0 20px;
+    margin-top: 10px;
+    .cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      gap: 1rem;
+
+      @include tablet {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+      @include mobile {
+        grid-template-columns: 1fr 1fr;
+      }
+      @include small-device {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  }
+
+  .list__of__users__close {
+    height: 100px;
+    transition: height 0.3s ease;
+  }
+
+  // scrollbar;
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #1c467000;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #f8be21;
+    border-radius: 5px;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: #214a73;
+  }
+}
