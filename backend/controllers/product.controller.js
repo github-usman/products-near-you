@@ -8,7 +8,7 @@ import ApiFeatures from "../utils/api-feature.js";
 // Get all Product
 
 export const getAllProductDetails = catchAysncErrors(async (req, res, next) => {
-  const resultPerPage = 5;
+  const resultPerPage = 8;
   const productCount = await Product.countDocuments();
   const apiFeatures = new ApiFeatures(Product.find(), req.query)
     .search()

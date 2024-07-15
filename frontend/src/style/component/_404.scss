@@ -1,0 +1,18 @@
+.page__not__found {
+  height: 41.5vh;
+  display: grid;
+  place-items: center;
+  .inner__container {
+    display: grid;
+    place-items: center;
+    .logo {
+      display: grid;
+      place-items: center;
+      margin: 1rem;
+      box-shadow: $white-box-shadow;
+      width: fit-content;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+    }
+  }
+}

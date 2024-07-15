@@ -5,7 +5,9 @@ import { Link } from 'react-router-dom';
 const Product = ({ details }) => {
   return (
     <div className={styles.container}>
-      <p className={styles.cardDiscountDeatils}>{details.discount}% Discount</p>
+      <p className={styles.cardDiscountDeatils}>
+        {details.discount}2% Discount
+      </p>
       <div className={styles.cardImgContainer}>
         <img
           className={styles.cardImg}

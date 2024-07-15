@@ -1,0 +1,33 @@
+.list__of__users,
+.list__of__users__close {
+  border: 1px solid black;
+  border-radius: 6px;
+  margin-top: 1rem;
+  width: 100%;
+  color: white;
+  background-color: rgb(51, 45, 45);
+  height: 100%;
+  transition: all 0.3s ease-in;
+  overflow-y: scroll;
+  .header {
+    background-color: rgb(51, 45, 45);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 5px;
+  }
+  .headings {
+    width: 20px;
+  }
+  .body {
+    opacity: 1;
+    transition: opacity 0.3s ease;
+  }
+  .close-body {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  .search {
+    width: 100%;
+  }
+}
