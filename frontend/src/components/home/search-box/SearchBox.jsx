@@ -17,12 +17,14 @@ const SearchBox = () => {
           className={styles.inputBtn}
           placeholder="Search for products"
           onChange={(e) => setInput(e.target.value)}
+          autoComplete="on"
           required
         />
         <button
           type="submit"
           className={styles.searchBtn}
           onClick={addInputHadler}
+          name="search button"
         >
           <GoSearch className={styles.searchIncon} />
         </button>

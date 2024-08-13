@@ -20,7 +20,7 @@ const SliderComponent = ({ testimonial }) => {
           <p>{testimonial.sale_discount}</p>
           <h2>{testimonial.sale_title}</h2>
           <p>{testimonial.sale_para}</p>
-          <button>Shop Now</button>
+          <button>Explore Now</button>
         </div>
       </div>
     </div>

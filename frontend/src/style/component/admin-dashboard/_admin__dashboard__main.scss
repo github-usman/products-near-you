@@ -1,24 +1,28 @@
 .admin__dashboard__main {
   display: flex;
   position: relative;
-  .left__navbar,
-  .left__navbar__close {
-    max-width: 210px;
-    position: sticky;
-    width: 100%;
+
+  .left__navbar {
+    min-width: 210px;
+    // position: sticky;
+    // width: 100%;
     transition: all 0.3s ease;
     height: 100vh;
     box-shadow: 1px 1px 15px 3px #745a5a;
   }
 
   .left__navbar__close {
-    max-width: 70px;
-    width: 15%;
+    width: 70px !important;
+    // position: sticky;
+    transition: all 0.3s ease;
+    box-shadow: 1px 1px 15px 3px #745a5a;
+    // max-width: 70px;
+    // width: 15%;
     .left__open__navbar__admin_dashboard {
       .hr-line-admin {
         height: 0.5px;
         background-color: $primary-green;
-        width: 100vw;
+        // width: 100vw;
         max-width: 70px;
         transition: max-width 0.3s ease;
       }
@@ -65,7 +69,7 @@
     }
   }
   .right__body {
-    width: 100%;
+    width: calc(100% - 210px);
     z-index: 10;
   }
 }
