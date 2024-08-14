@@ -14,7 +14,9 @@ process.on("uncaughtException", (err) => {
 server.use("/api/v1", app);
 
 server.listen(serverPort, () => {
-  console.log(`server is running on port ${serverPort} in ${serverMode} mode`);
+  console.log(
+    `server is running on port \x1b[44m${serverPort}\x1b[0m in \x1b[47m${serverMode}\x1b[0m mode`
+  );
 });
 
 process.on("unhandledRejection", (err) => {

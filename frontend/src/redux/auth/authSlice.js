@@ -216,7 +216,7 @@ const authSlice = createSlice({
         state.error = action.payload;
       })
 
-      // for USER PROFILE
+      // for get all products detainls
       .addCase(getAllProduct.pending, (state) => {
         state.isLoading = true;
         state.error = null;

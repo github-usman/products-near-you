@@ -4,11 +4,11 @@ import { Product } from "../models/product.model.js";
 import catchAysncErrors from "../middleware/catchAysncErrors.js";
 import ErrorHander from "../utils/error-handler.js";
 import ApiFeatures from "../utils/api-feature.js";
+import { resultPerPage } from "../config/config.js";
 
 // Get all Product
 
 export const getAllProductDetails = catchAysncErrors(async (req, res, next) => {
-  const resultPerPage = 8;
   const productCount = await Product.countDocuments();
   const apiFeatures = new ApiFeatures(Product.find(), req.query)
     .search()

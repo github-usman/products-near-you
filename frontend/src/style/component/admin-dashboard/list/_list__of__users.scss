@@ -1,33 +1,100 @@
 .list__of__users,
+.list__of__product,
 .list__of__users__close {
-  border: 1px solid black;
-  border-radius: 6px;
-  margin-top: 1rem;
-  width: 100%;
-  color: white;
-  background-color: rgb(51, 45, 45);
-  height: 100%;
-  transition: all 0.3s ease-in;
-  overflow-y: scroll;
+  width: 65rem;
+  max-width: 100%;
+
+  margin: 1rem auto;
+
   .header {
-    background-color: rgb(51, 45, 45);
+    background-color: rgb(88, 85, 85);
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 5px 5px;
+    border-radius: 5px 5px 0 0;
   }
-  .headings {
-    width: 20px;
-  }
-  .body {
-    opacity: 1;
+  .user__table {
+    background-color: rgb(134, 132, 132);
+    padding: 0.5rem;
+    border-radius: 0 0 5px 5px;
     transition: opacity 0.3s ease;
+
+    @media screen and (max-width: 1080px) {
+      overflow: scroll;
+    }
+
+    table {
+      display: flex;
+      min-width: 990px;
+      flex-direction: column;
+      .t-head,
+      .t-body {
+        display: grid;
+        grid-template-columns: 0.5fr 1fr 1.5fr 0.5fr 1fr;
+        td,
+        th {
+          width: 100%;
+          word-wrap: break-word;
+          text-wrap: wrap;
+          text-align: start;
+        }
+      }
+    }
   }
-  .close-body {
+
+  .table_hide {
     opacity: 0;
     transition: opacity 0.3s ease;
+    padding: 0rem;
+    table {
+      display: none;
+    }
+    .prod__image {
+      img {
+        height: 50px;
+        width: 50px;
+        border-radius: 50%;
+      }
+    }
   }
-  .search {
-    width: 100%;
+}
+
+.list__of__product {
+  width: 65rem;
+  max-width: 100%;
+
+  .header {
+    background-color: #259faf;
+    p {
+      color: #fff;
+    }
+  }
+
+  .user__table {
+    @media screen and (max-width: 1080px) {
+      overflow: scroll;
+    }
+    background-color: #36cadd;
+    table {
+      min-width: 990px;
+      .t-body,
+      .t-head {
+        grid-template-columns: 1.2fr 1.5fr 1fr 1fr 1fr 0.7fr 0.3fr 1fr 1fr;
+        td,
+        th {
+          padding-left: 0.2rem;
+        }
+        th {
+          margin-bottom: 0.5rem;
+        }
+      }
+
+      img {
+        height: 50px;
+        width: 50px;
+        border-radius: 50%;
+      }
+    }
   }
 }

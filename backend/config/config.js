@@ -28,9 +28,14 @@ const mailServices = {
   smtpHost: process.env.SMTP_HOST,
   smtpPort: process.env.SMTP_PORT,
 };
+// mail services
+const productDetails = {
+  resultPerPage: process.env.RESULT_PER_PAGE,
+};
 
 export const { serverMode, serverPort } = server;
 export const { dbUri, dbName } = database;
 export const { jwtSecret, jwtExpire, cookieExpire } = jwtInformation;
 export const { smtpMail, smtpPassword, smtpService, smtpHost, smtpPort } =
   mailServices;
+export const { resultPerPage } = productDetails;

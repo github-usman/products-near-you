@@ -1,37 +1,40 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllUsers } from '../../../../redux/admin/adminLeftMenuSlice';
-import UserTable from './UserTable';
+import { getAllProduct } from '../../../../redux/auth/authSlice';
+import UserTable from './ProductsTable';
 import { FiMaximize } from 'react-icons/fi';
 import { FaMinus } from 'react-icons/fa';
 
-const ListOfUser = () => {
-  const { users } = useSelector((state) => state.adminLeftMenu);
+const ListOfProducts = () => {
+  const { allProduct } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   useEffect(() => {
-    if (!users) {
-      dispatch(getAllUsers());
+    if (!allProduct) {
+      dispatch(getAllProduct());
     }
-  }, [users, dispatch]);
+  }, [allProduct, dispatch]);
   const [isOpen, setIsOpen] = useState(true);
 
   const handleToggle = () => {
     setIsOpen((val) => !val);
   };
   return (
-    <div className={`${isOpen ? 'list__of__users' : 'list__of__users__close'}`}>
+    <div
+      className={`${isOpen ? 'list__of__product' : 'list__of__users__close'}`}
+    >
       <div className="header">
-        <p>Users</p>
+        <p>All Products</p>
         {isOpen ? (
           <FaMinus onClick={handleToggle} />
         ) : (
           <FiMaximize onClick={handleToggle} />
         )}
       </div>
-      {/* <div className="hr-line"></div> */}
-      <article>{users && <UserTable k data={users} isOpen={isOpen} />}</article>
+      <article>
+        {allProduct && <UserTable k data={allProduct} isOpen={isOpen} />}
+      </article>
     </div>
   );
 };
 
-export default ListOfUser;
+export default ListOfProducts;

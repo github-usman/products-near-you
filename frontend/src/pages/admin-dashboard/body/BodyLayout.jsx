@@ -5,8 +5,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { toggleAdminLeftDashboard } from '../../../redux/admin/adminLeftMenuSlice';
 import AdminProfile from './AdminProfile';
 import CardItemd from './CardItemd';
-import ListOfProducts from './ListOfProducts';
 import ListOfUser from './list-of-user/ListOfUser';
+import ListOfProducts from './list-of-products/ListOfProducts';
 
 const DataDetails = [
   {
